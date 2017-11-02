@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - - Licensed under the Apache License, Version 2.0 (the "License"); 
+	- you may not use this file except in compliance with the License. - You 
+	may obtain a copy of the License at - - http://www.apache.org/licenses/LICENSE-2.0 
+	- - Unless required by applicable law or agreed to in writing, software - 
+	distributed under the License is distributed on an "AS IS" BASIS, - WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. - See the 
+	License for the specific language governing permissions and - limitations 
+	under the License. -->
+<!DOCTYPE mycat:rule SYSTEM "rule.dtd">
+<mycat:rule xmlns:mycat="http://io.mycat/">
+	<tableRule name="rule1">
+		<rule>
+			<columns>id</columns>
+			<algorithm>func1</algorithm>
+		</rule>
+	</tableRule>
+
+	<tableRule name="rule2">
+		<rule>
+			<columns>user_id</columns>
+			<algorithm>func1</algorithm>
+		</rule>
+	</tableRule>
+
+	<tableRule name="mod-long">
+		<rule>
+			<columns>id</columns>
+			<algorithm>mod-long</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="sharding-by-month">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>partbymonth</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="latest-month-calldate">
+		<rule>
+			<columns>calldate</columns>
+			<algorithm>latestMonth</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="auto-sharding-rang-mod">
+		<rule>
+			<columns>id</columns>
+			<algorithm>rang-mod</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="jch">
+		<rule>
+			<columns>id</columns>
+			<algorithm>jump-consistent-hash</algorithm>
+		</rule>
+	</tableRule>
+	<!-- ocs sclice rule -->
+	<tableRule name="acct-rule">
+		<rule>
+			<columns>acct_id</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule> 
+	<tableRule name="acct-from-rule">
+	                <rule>
+	                                        <columns>acct_id_from</columns>
+	                                                                <algorithm>murmur</algorithm>
+	                                                                                </rule>
+	                                                                                        </tableRule>
+	<tableRule name="ofr-detail-inst-rule">
+		<rule>
+			<columns>OFR_DETAIL_INST_REF_ID</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="prd-inst-id-rule">
+		<rule>
+			<columns>prd_inst_id</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="serv-id-rule">
+		<rule>
+			<columns>Serv_Id</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="cust-id-rule">
+		<rule>
+			<columns>cust_id</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="sn-rule">
+                <rule>
+                        <columns>sn</columns>
+                        <algorithm>murmur</algorithm>
+                </rule>
+        </tableRule>
+	 <tableRule name="nbr-rule">
+                <rule>
+                        <columns>nbr</columns>
+                        <algorithm>murmur</algorithm>
+                </rule>
+        </tableRule>
+	<tableRule name="file-name-rule">
+	         <rule>
+	               <columns>file_name</columns>
+	               <algorithm>murmur</algorithm>
+	     	</rule>
+	</tableRule>
+	<function name="murmur"
+		class="io.mycat.route.function.PartitionByMurmurHash">
+		<property name="seed">0</property><!-- 榛樿鏄� -->
+		<property name="count">10</property><!-- 瑕佸垎鐗囩殑鏁版嵁搴撹妭鐐规暟閲忥紝蹇呴』鎸囧畾锛屽惁鍒欐病娉曞垎鐗�-->
+		<property name="virtualBucketTimes">160</property><!-- 涓�釜瀹為檯鐨勬暟鎹簱鑺傜偣琚槧灏勪负杩欎箞澶氳櫄鎷熻妭鐐癸紝榛樿鏄�60鍊嶏紝涔熷氨鏄櫄鎷熻妭鐐规暟鏄墿鐞嗚妭鐐规暟鐨�60鍊�-->
+		<!-- <property name="weightMapFile">weightMapFile</property> 鑺傜偣鐨勬潈閲嶏紝娌℃湁鎸囧畾鏉冮噸鐨勮妭鐐归粯璁ゆ槸1銆備互properties鏂囦欢鐨勬牸寮忓～鍐欙紝浠ヤ粠0寮�鍒癱ount-1鐨勬暣鏁板�涔熷氨鏄妭鐐圭储寮曚负key锛屼互鑺傜偣鏉冮噸鍊间负鍊笺�鎵�湁鏉冮噸鍊煎繀椤绘槸姝ｆ暣鏁帮紝鍚﹀垯浠�浠ｆ浛 -->
+		<!-- <property name="bucketMapPath">/etc/mycat/bucketMapPath</property> 
+			鐢ㄤ簬娴嬭瘯鏃惰瀵熷悇鐗╃悊鑺傜偣涓庤櫄鎷熻妭鐐圭殑鍒嗗竷鎯呭喌锛屽鏋滄寚瀹氫簡杩欎釜灞炴�锛屼細鎶婅櫄鎷熻妭鐐圭殑murmur hash鍊间笌鐗╃悊鑺傜偣鐨勬槧灏勬寜琛岃緭鍑哄埌杩欎釜鏂囦欢锛屾病鏈夐粯璁ゅ�锛屽鏋滀笉鎸囧畾锛屽氨涓嶄細杈撳嚭浠讳綍涓滆タ -->
+	</function>
+
+	<function name="crc32slot"
+			  class="io.mycat.route.function.PartitionByCRC32PreSlot">
+		<property name="count">2</property><!-- 瑕佸垎鐗囩殑鏁版嵁搴撹妭鐐规暟閲忥紝蹇呴』鎸囧畾锛屽惁鍒欐病娉曞垎鐗�-->
+	</function>
+	<function name="hash-int"
+		class="io.mycat.route.function.PartitionByFileMap">
+		<property name="mapFile">partition-hash-int.txt</property>
+	</function>
+	<function name="rang-long"
+		class="io.mycat.route.function.AutoPartitionByLong">
+		<property name="mapFile">autopartition-long.txt</property>
+	</function>
+	<function name="mod-long" class="io.mycat.route.function.PartitionByMod">
+		<!-- how many data nodes -->
+		<property name="count">3</property>
+	</function>
+
+	<function name="func1" class="io.mycat.route.function.PartitionByLong">
+		<property name="partitionCount">8</property>
+		<property name="partitionLength">128</property>
+	</function>
+	<function name="latestMonth"
+		class="io.mycat.route.function.LatestMonthPartion">
+		<property name="splitOneDay">24</property>
+	</function>
+	<function name="partbymonth"
+		class="io.mycat.route.function.PartitionByMonth">
+		<property name="dateFormat">yyyy-MM-dd</property>
+		<property name="sBeginDate">2015-01-01</property>
+	</function>
+	
+	<function name="rang-mod" class="io.mycat.route.function.PartitionByRangeMod">
+        	<property name="mapFile">partition-range-mod.txt</property>
+	</function>
+	
+	<function name="jump-consistent-hash" class="io.mycat.route.function.PartitionByJumpConsistentHash">
+		<property name="totalBuckets">3</property>
+	</function>
+</mycat:rule>

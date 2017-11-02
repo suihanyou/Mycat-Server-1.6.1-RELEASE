@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<schema name="ocs" checkSQLschema="false" sqlMaxLimit="10000">
+
+		<!--conf -->
+		<table name="tb_a_billing_cycle" dataNode="ocs10" />
+		<table name="tb_a_billing_cycle_type" dataNode="ocs10" />
+		<table name="tb_a_payment_method" dataNode="ocs10" />
+		<table name="CONF_U_CREDIT_STATE_RULE" dataNode="ocs10" />
+		<table name="TB_A_DISCOUNT_EXPRESS" dataNode="ocs10" />
+		<table name="TB_A_Discount_Calc_Object" dataNode="ocs10" />
+		<table name="TB_A_Discount_Target_Object" dataNode="ocs10" />
+		<table name="tb_u_band" dataNode="ocs10" />
+
+
+		<!--slice -->
+		<table name="tb_a_acct" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_acct_balance" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_acct_item" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_arrear" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_balance_source" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_payment" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_present_user_info" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_acct_serv" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_open_acct" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_reconciliation" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_resource_trans" rule="acct-from-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill00" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill01" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill02" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill03" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill04" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill05" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill06" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill07" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill08" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill09" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill10" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill11" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill12" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill13" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill14" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill15" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill99" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="tb_a_acct_balance_rel" rule="acct-rule" dataNode="ocs$1-10" />
+
+		<table name="log_u_activity_sync" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_cancel" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_forceactive" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_open_serv" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_pay" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_present" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_product_change" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_state_change" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_static" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_transfer" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_tutuimp" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_tutusigned" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_ofr_detail_inst" rule="ofr-detail-inst-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_present_user_info" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_ratable_history" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_serv" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_serv_attr" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_serv_state_attr" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_vpn_group_user" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_serv_acct" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_alarm" rule="prd-inst-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_alarm_ctrl_user_order" rule="prd-inst-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_alarm_history" rule="prd-inst-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_CREDIT_RED" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_CREDIT_FREE" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_CREDIT_LEVEL" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_CREDIT_BEHAVIOR" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_serv_water_clock" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_CALLING_CTRL" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_WATER_TUTU" rule="serv-id-rule" dataNode="ocs$1-10" />		
+		<table name="LOG_U_CREDIT_CTRL" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_FREE_CREDIT_CTRL" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_FREE_SERV_SN_REL" rule="sn-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_FREEPHONE_RENEW_RESOURCE" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_PACKORDER" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_per_for_sms_send" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_prdchg_mid" rule="serv-id-rule" dataNode="ocs$1-10" />	
+		<table name="log_u_parking" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_RECHANGE_STATE" rule="serv-id-rule" dataNode="ocs$1-10" />	
+		<table name="log_u_alarm_history_backup" rule="prd-inst-id-rule" dataNode="ocs$1-10" />		
+		<table name="tb_u_arrear_tutu" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_tutu_online" rule="nbr-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_tutu_oper_ctrl" rule="nbr-rule" dataNode="ocs$1-10" />
+		<table name="log_u_tutu_oper" rule="nbr-rule" dataNode="ocs$1-10" />
+
+		<table name="tb_bil_base_ratable_resource" dataNode="ocs10" />
+		<table name="tb_bil_evt_pricing_strategy" dataNode="ocs10" />
+		<table name="tb_bil_ofr_cell_rel" dataNode="ocs10" />
+		<table name="tb_bil_pricing_combine_gp_list" dataNode="ocs10" />
+		<table name="tb_bil_pricing_combine_group" dataNode="ocs10" />
+		<table name="tb_bil_pricing_section" dataNode="ocs10" />
+		<table name="tb_bil_pricing_section_bak" dataNode="ocs10" />
+		<table name="tb_bil_pricing_sectiong_disc" dataNode="ocs10" />
+		<table name="tb_bil_ratable_resource_cond" dataNode="ocs10" />
+		<table name="TB_BIL_RATABLE_RESOURCE" dataNode="ocs10" />
+		<table name="tb_bil_rate_condition" dataNode="ocs10" />
+		<table name="tb_bil_rate_condition_code" dataNode="ocs10" />
+		<table name="tb_bil_record_type_code" dataNode="ocs10" />
+		<table name="tb_bil_share_rel" dataNode="ocs10" />
+		<table name="tb_bil_strategy_resource_rel" dataNode="ocs10" />
+		<table name="tb_bil_tariff" dataNode="ocs10" />
+		<table name="tb_bil_top_value_cond" dataNode="ocs10" />
+		<table name="tb_bil_vpn_group_relation" dataNode="ocs10" />
+		<table name="tb_bil_vpn_group_user_group" dataNode="ocs10" />
+		<table name="tb_bil_prd_ofr" dataNode="ocs10" />
+		<table name="TB_BIL_PRD_OFR_ATTR" dataNode="ocs10" />
+		<table name="TB_BIL_PRD_OFR_REL" dataNode="ocs10" />
+
+		<table name="tb_c_cust" rule="cust-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_c_cust_identifacation" rule="cust-id-rule"
+			dataNode="ocs$1-10" />
+		<table name="log_c_open_cust" rule="cust-id-rule" dataNode="ocs$1-10" />
+
+
+		<table name="conf_debug_phone_num" dataNode="ocs10" />
+		<table name="conf_detail_param" dataNode="ocs10" />
+		<table name="conf_seq" dataNode="ocs10" />
+		<table name="tb_p_access_number" dataNode="ocs10" />
+		<table name="tb_p_alarm_ctrl_limit" dataNode="ocs10" />
+		<table name="tb_p_alarm_ctrl_time" dataNode="ocs10" />
+		<table name="tb_p_balance_source_type" dataNode="ocs10" />
+		<table name="tb_p_balance_type" dataNode="ocs10" />
+		<table name="tb_p_country" dataNode="ocs10" />
+		<table name="tb_p_credit" dataNode="ocs10" />
+		<table name="tb_p_credit_state_rule" dataNode="ocs10" />
+		<table name="tb_p_event_type_rule_tree" dataNode="ocs10" />
+		<table name="tb_p_item" dataNode="ocs10" />
+		<table name="tb_p_item_source" dataNode="ocs10" />
+		<table name="tb_p_msg_templet" dataNode="ocs10" />
+		<table name="tb_p_msisdn_area_map" dataNode="ocs10" />
+		<table name="tb_p_present_rule" dataNode="ocs10" />
+		<table name="tb_p_spe_payment" dataNode="ocs10" />
+		<table name="tb_p_spe_payment_desc" dataNode="ocs10" />
+		<table name="tb_p_special_nbr" dataNode="ocs10" />
+		<table name="tb_p_static_rule" dataNode="ocs10" />
+		<table name="tb_p_switch_split_first" dataNode="ocs10" />
+		<table name="tb_p_switch_split_second" dataNode="ocs10" />
+		<table name="tb_p_value_change" dataNode="ocs10" />
+		<table name="TB_P_SATTE_CONSULT" dataNode="ocs10" />
+		<table name="tb_p_present_rule_day" dataNode="ocs10" />
+		<table name="tb_p_present_rule_immediate" dataNode="ocs10" />
+		<table name="tb_p_present_rule_month" dataNode="ocs10" />
+		<table name="CONF_SERVER_SEQ" dataNode="ocs10" />
+		<table name="tb_p_sorting_rule" dataNode="ocs10" />
+		<table name="tb_p_sorting_param" rule="file-name-rule" dataNode="ocs$1-10" />
+		<table name="tb_p_switch_filter" dataNode="ocs10" />
+		<table name="tb_p_free_static_rule" dataNode="ocs10" />
+		<table name="Tb_P_Balance_Type_Rel" dataNode="ocs10" />
+		<table name="tb_p_all_alarm_ctrl" dataNode="ocs10" />
+		<table name="tb_p_balance_msg_templet" dataNode="ocs10" />
+		<table name="TB_P_TEST_TUTU" dataNode="ocs10" />
+		<table name="tb_p_prd_group_rel" dataNode="ocs10" />
+		<table name="tb_p_prd_group" dataNode="ocs10" />
+		<table name="tb_p_pkg_balance_type_rel" dataNode="ocs10" />
+		<table name="tb_p_prd_rel" dataNode="ocs10" />
+		<table name="TB_P_OFR_MAPPING" dataNode="ocs10" />
+		<table name="TB_P_ARREAR_ACT" dataNode="ocs10" />
+		<table name="TB_P_FREE_CREDIT_RULE" dataNode="ocs10" />
+		<table name="tb_p_code_list" dataNode="ocs10" />	
+		<table name="tb_daily" dataNode="ocs10" />
+		<table name="tb_daily_bak" dataNode="ocs10" />
+	
+		<!--month tasks -->
+		<table name="log_a_bill60201708" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201708" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201708" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201708" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201708" rule="serv-id-rule" dataNode="ocs$1-10" />
+
+		<table name="log_a_bill60201709" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201709" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201709" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201709" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201709" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201710" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201710" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201710" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201710" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201710" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201711" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201711" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201711" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201711" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201711" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201712" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201712" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201712" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201712" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201712" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201801" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201801" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201801" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201801" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201801" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201802" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201802" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201802" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201802" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201802" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201803" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201803" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201803" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201803" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201803" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201804" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201804" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201804" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201804" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201804" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201805" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201805" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201805" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201805" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201805" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201806" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201806" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201806" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201806" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201806" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201807" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201807" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201807" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201807" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201807" rule="serv-id-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_a_bill60201808" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill70201808" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill80201808" rule="acct-rule" dataNode="ocs$1-10" />
+		<table name="log_a_bill90201808" rule="acct-rule" dataNode="ocs$1-10" />
+		
+		<table name="log_rb_cdr60201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr70201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr80201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_rb_cdr90201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd60201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd70201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd80201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_rat_upd90201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_water_clock201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_reconciliation201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_TB_U_ARREAR_TUTU201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="TB_U_ARREAR_TUTU201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="LOG_U_ARREAR201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="tb_u_acct_item201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+		<table name="log_u_free_static201808" rule="serv-id-rule" dataNode="ocs$1-10" />
+
+	</schema>
+
+	<!--acct domain -->
+
+	<dataNode name="ocs1" dataHost="localhost46" database="ocs1" />
+	<dataNode name="ocs2" dataHost="localhost46" database="ocs2" />
+	<dataNode name="ocs3" dataHost="localhost46" database="ocs3" />
+	<dataNode name="ocs4" dataHost="localhost46" database="ocs4" />
+	<dataNode name="ocs5" dataHost="localhost46" database="ocs5" />
+	<dataNode name="ocs6" dataHost="localhost47" database="ocs6" />
+	<dataNode name="ocs7" dataHost="localhost47" database="ocs7" />
+	<dataNode name="ocs8" dataHost="localhost47" database="ocs8" />
+	<dataNode name="ocs9" dataHost="localhost47" database="ocs9" />
+	<dataNode name="ocs10" dataHost="localhost47" database="ocs10" />
+
+	<dataHost name="localhost46" maxCon="100" minCon="10"
+		balance="0" writeType="0" dbType="mysql" dbDriver="native" switchType="1"
+		slaveThreshold="10">
+		<heartbeat>select 1</heartbeat>
+		<!-- can have multi write hosts -->
+		<writeHost host="host146" url="170.1.1.146:5506" user="ocs"
+			password="ocs">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+	<dataHost name="localhost47" maxCon="100" minCon="10"
+		balance="0" writeType="0" dbType="mysql" dbDriver="native" switchType="1"
+		slaveThreshold="100">
+		<heartbeat>select 1</heartbeat>
+		<!-- can have multi write hosts -->
+		<writeHost host="host147" url="170.1.1.147:5506" user="ocs"
+			password="ocs">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+</mycat:schema>
