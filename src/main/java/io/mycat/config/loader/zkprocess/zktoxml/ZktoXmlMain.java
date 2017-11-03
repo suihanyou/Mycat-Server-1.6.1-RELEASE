@@ -131,19 +131,30 @@ public class ZktoXmlMain {
 
         // 父节点 集群id/注册节点名称/
         String parPath = basePath + ZkConfig.getInstance().getValue(ZkParamCfg.ZK_REG_NAME);
-        String nodeInfo = ZkConfig.getInstance().getValue(ZkParamCfg.NODE_IP_STRING) + ":" + port;
-        String subPath = parPath + ZookeeperPath.ZK_SEPARATOR.getKey() + nodeInfo;
-        try {
-            if (zkConn.checkExists().forPath(parPath) == null) {
-                // 如果父节点不存在，创建父节点
-                zkConn.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(parPath);
-            }
-            if (zkConn.checkExists().forPath(subPath) != null) {
+        String nodeInfo = ZookeeperPath.ZK_SEPARATOR.getKey()
+                + ZkConfig.getInstance().getValue(ZkParamCfg.NODE_IP_STRING) + ":" + port;
+        String subPath = parPath + nodeInfo;
+        String clientPath = basePath + ZkConfig.getInstance().getValue(ZkParamCfg.ZK_CLIENT_NODE) + nodeInfo;
+        if (zkConn.checkExists().forPath(parPath) == null) {
+            // 如果父节点不存在，创建父节点
+            zkConn.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(parPath);
+        }
+        if (zkConn.checkExists().forPath(clientPath) == null) {
+            // 如果客户端注册节点不存在，创建
+            zkConn.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(clientPath);
+        }
+        if (zkConn.getChildren().forPath(clientPath) != null) {
+            // 存在子节点，说明有其他注册了相同的mycat节点，并且在使用中
+            throw new RuntimeException("注册失败，已经存在相同的注册节点");
+        }
+        // 如果临时节点存在，并且需要立即注册
+        if (zkConn.checkExists().forPath(subPath) != null) {
+            try {
                 // 如果子节点存在，尝试删除子节点，一般是两次连续启动，临时节点还没有从zk上删除
                 zkConn.delete().forPath(subPath);
+            } catch (Exception e) {
+                // do nothing 可能是临时节点自己消失了
             }
-        } catch (Exception e) {
-            // 同时创建或者删除可能会报错 这种错误 do nothing 不用处理
         }
 
         // 创建临时子节点，注册mycat,ip+port 确定唯一一个节点，防止一个机器上启动多个mycat
@@ -240,7 +251,7 @@ public class ZktoXmlMain {
         };
         CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().aclProvider(aclProvider)
                 .connectString(url).authorization("digest", (id0 + ":" + id1).getBytes())
-                .retryPolicy(new ExponentialBackoffRetry(100, 6)).build();
+                .retryPolicy(new ExponentialBackoffRetry(100, 3)).build();
 
         // start connection
         curatorFramework.start();

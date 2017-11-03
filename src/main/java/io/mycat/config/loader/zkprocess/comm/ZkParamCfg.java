@@ -43,7 +43,13 @@ public enum ZkParamCfg {
      * 
      * @字段说明 ZK_REG_NAME
      */
-    ZK_REG_NAME("registName"),
+    ZK_REG_NAME("registNode"),
+    /**
+     * zk上client节点挂载的节点
+     * 
+     * @字段说明 ZK_REG_NAME
+     */
+    ZK_CLIENT_NODE("clientNode"),
     /**
      * 节点的ip串
      * 
