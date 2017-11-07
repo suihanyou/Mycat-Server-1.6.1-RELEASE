@@ -142,13 +142,13 @@ public class ZktoXmlMain {
 		// 父节点 集群id/注册节点名称/
 		String parPath = basePath
 				+ ZkConfig.getInstance().getValue(ZkParamCfg.ZK_REG_NAME);
-		String nodeInfo = ZookeeperPath.ZK_SEPARATOR.getKey()
-				+ ZkConfig.getInstance().getValue(ZkParamCfg.NODE_IP_STRING)
+		String nodeInfo = ZkConfig.getInstance().getValue(
+				ZkParamCfg.NODE_IP_STRING)
 				+ ":" + port;
-		String subPath = parPath + nodeInfo;
-		String clientPath = basePath
-				+ ZkConfig.getInstance().getValue(ZkParamCfg.ZK_CLIENT_NODE)
-				+ nodeInfo;
+		String subPath = ZKPaths.makePath(parPath, nodeInfo);
+		String clientPath = ZKPaths.makePath(basePath
+				+ ZkConfig.getInstance().getValue(ZkParamCfg.ZK_CLIENT_NODE),
+				nodeInfo);
 		if (zkConn.checkExists().forPath(parPath) == null) {
 			// 如果父节点不存在，创建父节点
 			zkConn.create().creatingParentsIfNeeded()
